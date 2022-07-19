@@ -1,9 +1,23 @@
 {% extends "base.html" %}
 {% load blog_extras %}
 {% block content %}
+  <h2>Blog Posts</h2>
+    {% for post in posts %}
+    {% col "border-bottom" %}
+      <div class="col">
+          <h3>{{ post.title }}</h3>
+          {% include "blog/post-byline.html" %}
+          <p>{{ post.summary }}</p>
+          <p>
+              ({{ post.content|wordcount }} words)
+              <a href="{% url "blog-post-detail" post.slug %}">Read More</a>
+          </p>
+      </div>
+    {% endcol %}
+    {% endfor %}
   
 <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <!-- <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -22,22 +36,25 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> -->
 
 <!-- BLOG content -->
-    <h2>Blog Posts</h2>
+    <!-- <h2>Blog Posts</h2>
     {% for post in posts %}
-    <div class="row">
+      <div class="row">
         <div class="col">
             <h3>{{ post.title }}</h3>
-    <small>By {{ post.author|author_details:request.user }} on {{ post.published_at|date:"M, d Y" }}</small>            <p>{{ post.summary }}</p>
+            {% include "blog/post-byline.html" %}
+            <p>{{ post.summary }}</p>
             <p>
                 ({{ post.content|wordcount }} words)
-                <a href="#">Read More</a>
+                <a href="{% url "blog-post-detail" post.slug %}">Read More</a
             </p>
         </div>
-    </div>
-    {% endfor %}
+      </div>
+    {% endfor %} -->
+
+
 
 <!-- COLUMNS -->
 <!-- <div class="row">
