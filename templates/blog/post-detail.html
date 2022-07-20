@@ -12,10 +12,7 @@
         {{ post.content|safe }}
     </div>
 {% endrow %}
-{% endblock %}
-
 {% row %}
-    {% col %}
-        {% recent_posts post %}
-    {% endcol %}
+    {% recent_posts post %}
 {% endrow %}
+{% endblock %}
