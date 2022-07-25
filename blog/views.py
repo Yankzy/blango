@@ -6,8 +6,6 @@ import logging
 
 
 logger = logging.getLogger(__name__)
-# def index(request):
-#     return render(request, "blog/index.html")
 
 def index(request):
     posts = Post.objects.filter(published_at__lte=timezone.now())
